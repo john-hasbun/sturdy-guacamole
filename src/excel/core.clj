@@ -6,20 +6,15 @@
 
 (def counter 0)
 
-
 (defn redirect-counter []
   (def counter (inc counter)))
 
-(defn request-handler
-  "Handles the initial request"
-  [request]
+(defn request-handler [request]
   (redirect-counter)
   {:status 200
    :headers {"Content-Type" "application/json"}
    :body (json/write-str {:a "The redirect limit is" :b counter})})
 
 
-(defn -main
-  "Setup a simple server that redirects n times then returns data"
-  [& args]
+(defn -main [& args]
   (jetty/run-jetty request-handler {:port 4895}))
