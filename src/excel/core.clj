@@ -13,7 +13,7 @@
   (redirect-counter)
   {:status 200
    :headers {"Content-Type" "application/json"}
-   :body (json/write-str {:a "The redirect limit is" :b counter})})
+   :body (str "Field,Value;The redirect limit is," counter ";")})
 
 
 (defn -main [& args]
