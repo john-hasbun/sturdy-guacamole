@@ -1,6 +1,5 @@
 (ns excel.core
   (:require [ring.adapter.jetty :as jetty])
-  (:require [clojure.data.json :as json])
   (:gen-class))
 
 
@@ -12,8 +11,8 @@
 (defn request-handler [request]
   (redirect-counter)
   {:status 200
-   :headers {"Content-Type" "application/json"}
-   :body (str "Field,Value;The redirect limit is," counter ";")})
+   :headers {"Content-Type" "text/html"}
+   :body (str "<html><table><tr><th>" counter "</th></tr></table></html>")})
 
 
 (defn -main [& args]
